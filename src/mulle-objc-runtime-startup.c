@@ -36,6 +36,8 @@
 #include <mulle-objc-runtime/mulle-objc-runtime.h>
 
 
+#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0 << 20) | (16 << 8) | 0)
+
 // always returns same value (in same thread)
 MULLE_C_CONST_RETURN struct _mulle_objc_universe  *
    __register_mulle_objc_universe( mulle_objc_universeid_t universeid,
