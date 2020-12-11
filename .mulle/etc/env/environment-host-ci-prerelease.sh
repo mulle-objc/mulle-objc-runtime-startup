@@ -1,4 +1,21 @@
-# Fill it with mulle-env envirionment --scope  set <key> <value>
+#
+#
+#
+export MULLE_DATA_NODETYPE="git"
+
+
+#
+#
+#
+export MULLE_DATA_BRANCH="prerelease"
+
+
+#
+#
+#
+export MULLE_DATA_URL="https://github.com/mulle-c/mulle-data.git"
+
+
 #
 # mulle-objc-runtime nodetype: ${MULLE_OBJC_RUNTIME_NODETYPE:-tar}
 #
