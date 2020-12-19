@@ -1,6 +1,6 @@
 # mulle-objc-runtime-startup
 
-#### ▶️ Startup code for the mulle-objc runtime
+#### ▶️  Startup code for the mulle-objc runtime
 
 
 This static library provides the required `__register_mulle_objc_universe`

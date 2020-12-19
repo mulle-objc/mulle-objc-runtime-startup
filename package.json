@@ -1,0 +1,19 @@
+{
+   "name" : "mulle-objc-runtime-startup",
+   "version" : "0.18.0",
+   "description" : "▶️  Startup code for the mulle-objc runtime",
+   "homepage" : "https://github.com/mulle-objc/mulle-objc-runtime-startup",
+   "bugs" : "https://github.com/mulle-objc/mulle-objc-runtime-startup/issues",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repository" : {
+      "type" : "git",
+      "url" : "mulle-objc/mulle-objc-runtime-startup"
+   },
+   "dependencies" : {
+      "mulle-objc-runtime" : "mulle-objc/mulle-objc-runtime",
+      "mulle-atinit" : "mulle-core/mulle-atinit",
+      "mulle-atexit" : "mulle-core/mulle-atexit",
+      "mulle-dlfcn" : "mulle-core/mulle-dlfcn"
+   }
+}
