@@ -52,9 +52,4 @@ unset( STARTUP_LIBRARY_NAME)
 include( Library)
 include( InstallLibrary)
 
-if( "${C_COMPILER_NAME}" MATCHES "mulle-cl*")
-   target_compile_options( "${LIBRARY_NAME}" PRIVATE -x objective-c)
-endif()
-
-
 include( FinalOutput OPTIONAL)

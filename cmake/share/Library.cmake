@@ -13,17 +13,36 @@ endif()
 if( NOT LIBRARY_NAME)
    set( LIBRARY_NAME "${PROJECT_NAME}")
 endif()
+if( NOT LIBRARY_IDENTIFIER)
+   string( MAKE_C_IDENTIFIER "${LIBRARY_NAME}" LIBRARY_IDENTIFIER)
+endif()
+if( NOT LIBRARY_UPCASE_IDENTIFIER)
+   string( TOUPPER "${LIBRARY_IDENTIFIER}" LIBRARY_UPCASE_IDENTIFIER)
+endif()
+# if( NOT LIBRARY_DOWNCASE_IDENTIFIER)
+#    string( TOLOWER "${LIBRARY_IDENTIFIER}" LIBRARY_DOWNCASE_IDENTIFIER)
+# endif()
+ 
 
 if( NOT LIBRARY_SOURCES)
    set( LIBRARY_SOURCES "${SOURCES}")
    set( __LIBRARY_SOURCES_UNSET ON)
 endif()
 
+if( NOT LIBRARY_RESOURCES)
+   set( LIBRARY_RESOURCES "${RESOURCES}")
+   set( __LIBRARY_RESOURCES_UNSET ON)
+endif()
+
+
 include( PreLibrary OPTIONAL)
 
 if( NOT LIBRARY_SOURCES)
    message( FATAL_ERROR "There are no sources to compile for library ${LIBRARY_NAME}. Did mulle-sde update run yet ?")
 endif()
+
+# RPATH must be ahead of add_library, but is it really needed ?
+include( InstallRpath OPTIONAL)
 
 # Libraries are built in two stages:
 #
@@ -43,6 +62,8 @@ add_library( "_1_${LIBRARY_NAME}" OBJECT
 
 set( ALL_OBJECT_FILES
    $<TARGET_OBJECTS:_1_${LIBRARY_NAME}>
+   ${OTHER_LIBRARY_OBJECT_FILES}
+   ${OTHER_${LIBRARY_UPCASE_IDENTIFIER}_OBJECT_FILES}
 )
 
 set_property( TARGET "_1_${LIBRARY_NAME}" PROPERTY CXX_STANDARD 11)
@@ -90,6 +111,7 @@ if( LINK_PHASE)
    add_library( "${LIBRARY_NAME}"
       ${ALL_OBJECT_FILES}
       ${PROJECT_INSTALLABLE_HEADERS} # else won't get installed by framework
+      ${LIBRARY_RESOURCES}
    )
 
    add_dependencies( "${LIBRARY_NAME}" "_1_${LIBRARY_NAME}")
@@ -120,9 +142,12 @@ if( LINK_PHASE)
       if( NOT SHARED_LIBRARY_LIST)
          set( SHARED_LIBRARY_LIST
             ${DEPENDENCY_LIBRARIES}
+            ${DEPENDENCY_FRAMEWORKS}
             ${OPTIONAL_DEPENDENCY_LIBRARIES}
+            ${OPTIONAL_DEPENDENCY_FRAMWORKS}
             ${OS_SPECIFIC_LIBRARIES}
-         )
+            ${OS_SPECIFIC_FRAMEWORKS}
+      )
       endif()
 
       include( PostSharedLibrary OPTIONAL) # additional hook
@@ -144,21 +169,21 @@ if( LINK_PHASE)
       ${INSTALL_LIBRARY_TARGETS}
    )
 
-   if( LIBRARY_RESOURCES)
-      set( INSTALL_${LIBRARY_NAME}_RESOURCES ${LIBRARY_RESOURCES})
-   else()
-      if( RESOURCES)
-         set( INSTALL_${LIBRARY_NAME}_RESOURCES ${RESOURCES})
-      endif()
-   endif()
+   set( INSTALL_${LIBRARY_UPCASE_IDENTIFIER}_RESOURCES ${LIBRARY_RESOURCES})
 
    include( PostLibrary OPTIONAL)
 endif()
 
-   ### Install
 
-   # clean EXECUTABLE_SOURCES for the next run, if set by this script
+# clean LIBRARY_SOURCES for the next run, if set by this script
 if( __LIBRARY_SOURCES_UNSET )
    unset( LIBRARY_SOURCES)
    unset( __LIBRARY_SOURCES_UNSET)
+endif()
+
+
+# clean LIBRARY_RESOURCES for the next run, if set by this script
+if( __LIBRARY_RESOURCES_UNSET )
+   unset( LIBRARY_RESOURCES)
+   unset( __LIBRARY_RESOURCES_UNSET)
 endif()

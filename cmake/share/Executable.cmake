@@ -12,6 +12,16 @@ endif()
 if( NOT EXECUTABLE_NAME)
    set( EXECUTABLE_NAME "${PROJECT_NAME}")
 endif()
+if( NOT EXECUTABLE_IDENTIFIER)
+   string( MAKE_C_IDENTIFIER "${EXECUTABLE_NAME}" EXECUTABLE_IDENTIFIER)
+endif()
+if( NOT EXECUTABLE_UPCASE_IDENTIFIER)
+   string( TOUPPER "${EXECUTABLE_IDENTIFIER}" EXECUTABLE_UPCASE_IDENTIFIER)
+endif()
+if( NOT EXECUTABLE_DOWNCASE_IDENTIFIER)
+   string( TOLOWER "${EXECUTABLE_IDENTIFIER}" EXECUTABLE_DOWNCASE_IDENTIFIER)
+endif()
+
 
 if( NOT EXECUTABLE_SOURCES)
    set( EXECUTABLE_SOURCES "${SOURCES}")
@@ -34,10 +44,14 @@ add_library( "_1_${EXECUTABLE_NAME}" OBJECT
 
 set( ALL_OBJECT_FILES
    $<TARGET_OBJECTS:_1_${EXECUTABLE_NAME}>
+   ${OTHER_EXECUTABLE_OBJECT_FILES}
+   ${OTHER_${EXECUTABLE_UPCASE_IDENTIFIER}_OBJECT_FILES}
 )
 
 set_property( TARGET "_1_${EXECUTABLE_NAME}" PROPERTY CXX_STANDARD 11)
 
+# RPATH must be ahead of add_executable
+include( InstallRpath OPTIONAL)
 
 if( LINK_PHASE)
    add_executable( "${EXECUTABLE_NAME}"
@@ -74,19 +88,43 @@ If these are regular C libraries, be sure, that they are marked as
 ")
       endif()
 
+      if( ALL_LOAD_DEPENDENCY_FRAMEWORKS)
+         message( FATAL_ERROR "ALL_LOAD_DEPENDENCY_FRAMEWORKS \
+\"${ALL_LOAD_DEPENDENCY_FRAMEWORKS}\" are not linked to ${EXECUTABLE_NAME}.")
+      endif()
+
       if( STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES)
          message( FATAL_ERROR "STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES \
 \"${STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES}\" are not linked to ${EXECUTABLE_NAME}.
 STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES is an Objective-C feature, but this
 project is seemingly not setup for Objective-C.")
+      endif()
+
+      if( STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS)
+         message( FATAL_ERROR "STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS \
+\"${STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS}\" are not linked to ${EXECUTABLE_NAME}.
+STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS is an Objective-C feature, but this
+project is seemingly not setup for Objective-C.")
 
       endif()
 
+      # MEMO: many of these definitions don't exist like
+      #       FORCE_STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS we just keep them
+      #       for orthogonality
+      #
       set( EXECUTABLE_LIBRARY_LIST
+         ${FORCE_ALL_LOAD_DEPENDENCY_LIBRARIES}
+         ${FORCE_ALL_LOAD_DEPENDENCY_FRAMEWORKS}
          ${DEPENDENCY_LIBRARIES}
+         ${DEPENDENCY_FRAMEWORKS}
          ${OPTIONAL_DEPENDENCY_LIBRARIES}
+         ${OPTIONAL_DEPENDENCY_FRAMWORKS}
+         ${FORCE_STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES}
+         ${FORCE_STARTUP_ALL_LOAD_DEPENDENCY_FRAMEWORKS}
          ${STARTUP_DEPENDENCY_LIBRARIES}
+         ${STARTUP_DEPENDENCY_FRAMEWORKS}
          ${OS_SPECIFIC_LIBRARIES}
+         ${OS_SPECIFIC_FRAMEWORKS}
       )
    endif()
 
@@ -98,6 +136,14 @@ project is seemingly not setup for Objective-C.")
       "${EXECUTABLE_NAME}"
       ${INSTALL_EXECUTABLE_TARGETS}
    )
+
+   if( EXECUTABLE_RESOURCES)
+      set( INSTALL_${EXECUTABLE_UPCASE_IDENTIFIER}_RESOURCES ${EXECUTABLE_RESOURCES})
+   else()
+      if( RESOURCES)
+         set( INSTALL_${EXECUTABLE_UPCASE_IDENTIFIER}_RESOURCES ${RESOURCES})
+      endif()
+   endif()
 
    include( PostExecutable OPTIONAL)
 
