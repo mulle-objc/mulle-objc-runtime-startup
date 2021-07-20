@@ -8,10 +8,16 @@ if( MULLE_TRACE_INCLUDE)
    MESSAGE( STATUS "# Include \"${CMAKE_CURRENT_LIST_FILE}\"" )
 endif()
 
+#
+# contents are derived from the file locations
+
 set( INCLUDE_DIRS
 src/reflect
 )
 
+#
+# contents selected with patternfile ??-header--public-generated-headers
+#
 set( PUBLIC_GENERATED_HEADERS
 src/reflect/_mulle-objc-runtime-startup-provide.h
 )

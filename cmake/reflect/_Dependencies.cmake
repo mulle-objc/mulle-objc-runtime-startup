@@ -35,7 +35,8 @@ if( NOT MULLE_OBJC_RUNTIME_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-objc-runtime no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -93,6 +94,7 @@ if( NOT MULLE_OBJC_RUNTIME_LIBRARY)
          endif()
       endforeach()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-objc-runtime no-require-link`
       message( FATAL_ERROR "MULLE_OBJC_RUNTIME_LIBRARY was not found")
    endif()
 endif()
@@ -121,7 +123,8 @@ if( NOT MULLE_ATINIT_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-atinit no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -155,17 +158,9 @@ if( NOT MULLE_ATINIT_LIBRARY)
          if( EXISTS "${_TMP_MULLE_ATINIT_DIR}/DependenciesAndLibraries.cmake")
             unset( MULLE_ATINIT_DEFINITIONS)
             list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_ATINIT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
             #
             include( "${_TMP_MULLE_ATINIT_DIR}/DependenciesAndLibraries.cmake")
             #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
             #
             list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_ATINIT_DIR}")
             set( INHERITED_DEFINITIONS
@@ -196,6 +191,7 @@ if( NOT MULLE_ATINIT_LIBRARY)
          endforeach()
       endif()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-atinit no-require-link`
       message( FATAL_ERROR "MULLE_ATINIT_LIBRARY was not found")
    endif()
 endif()
@@ -224,7 +220,8 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-atexit no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -258,17 +255,9 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          if( EXISTS "${_TMP_MULLE_ATEXIT_DIR}/DependenciesAndLibraries.cmake")
             unset( MULLE_ATEXIT_DEFINITIONS)
             list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_ATEXIT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
             #
             include( "${_TMP_MULLE_ATEXIT_DIR}/DependenciesAndLibraries.cmake")
             #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
             #
             list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_ATEXIT_DIR}")
             set( INHERITED_DEFINITIONS
@@ -299,6 +288,7 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          endforeach()
       endif()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-atexit no-require-link`
       message( FATAL_ERROR "MULLE_ATEXIT_LIBRARY was not found")
    endif()
 endif()
@@ -327,7 +317,8 @@ if( NOT MULLE_DLFCN_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-dlfcn no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -385,6 +376,7 @@ if( NOT MULLE_DLFCN_LIBRARY)
          endif()
       endforeach()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-dlfcn no-require-link`
       message( FATAL_ERROR "MULLE_DLFCN_LIBRARY was not found")
    endif()
 endif()

@@ -1,22 +1,4 @@
 #
-#
-#
-export MULLE_DATA_NODETYPE="git"
-
-
-#
-#
-#
-export MULLE_DATA_BRANCH="prerelease"
-
-
-#
-#
-#
-export MULLE_DATA_URL="https://github.com/mulle-c/mulle-data.git"
-
-
-#
 # mulle-objc-runtime nodetype: ${MULLE_OBJC_RUNTIME_NODETYPE:-tar}
 #
 export MULLE_OBJC_RUNTIME_NODETYPE="git"
@@ -212,5 +194,23 @@ export MULLE_ATEXIT_URL="https://github.com/mulle-core/mulle-atexit.git"
 # mulle-atexit branch: ${MULLE_ATEXIT_BRANCH}
 #
 export MULLE_ATEXIT_BRANCH="prerelease"
+
+
+#
+# mulle-data nodetype: ${MULLE_DATA_NODETYPE:-tar}
+#
+export MULLE_DATA_NODETYPE="git"
+
+
+#
+# mulle-data url: ${MULLE_DATA_URL:-https://github.com/mulle-c/mulle-data/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_DATA_URL="https://github.com/mulle-c/mulle-data.git"
+
+
+#
+# mulle-data branch: ${MULLE_DATA_BRANCH}
+#
+export MULLE_DATA_BRANCH="prerelease"
 
 
