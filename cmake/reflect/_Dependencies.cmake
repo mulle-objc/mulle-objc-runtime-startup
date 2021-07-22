@@ -15,7 +15,7 @@ endif()
 #
 # Generated from sourcetree: 3a41e3ca-a2b8-4e6b-acc1-852fe289262f;mulle-objc-runtime;no-all-load,no-bequeath,no-import,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-objc-runtime no-link`
-# Disable for this platform: `mulle-sourcetree mark mulle-objc-runtime no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark mulle-objc-runtime no-cmake-platform-darwin`
 #
 if( NOT MULLE_OBJC_RUNTIME_LIBRARY)
    find_library( MULLE_OBJC_RUNTIME_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-objc-runtime${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-objc-runtime NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -35,7 +35,8 @@ if( NOT MULLE_OBJC_RUNTIME_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-objc-runtime no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -93,6 +94,7 @@ if( NOT MULLE_OBJC_RUNTIME_LIBRARY)
          endif()
       endforeach()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-objc-runtime no-require-link`
       message( FATAL_ERROR "MULLE_OBJC_RUNTIME_LIBRARY was not found")
    endif()
 endif()
@@ -101,7 +103,7 @@ endif()
 #
 # Generated from sourcetree: 20bb6006-3cb6-4711-90ef-ae1a5fa896b8;mulle-atinit;no-dynamic-link,no-import,no-intermediate-link,no-public,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-atinit no-link`
-# Disable for this platform: `mulle-sourcetree mark mulle-atinit no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark mulle-atinit no-cmake-platform-darwin`
 #
 if( NOT MULLE_ATINIT_LIBRARY)
    find_library( MULLE_ATINIT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-atinit${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-atinit NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -121,7 +123,8 @@ if( NOT MULLE_ATINIT_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-atinit no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -155,17 +158,9 @@ if( NOT MULLE_ATINIT_LIBRARY)
          if( EXISTS "${_TMP_MULLE_ATINIT_DIR}/DependenciesAndLibraries.cmake")
             unset( MULLE_ATINIT_DEFINITIONS)
             list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_ATINIT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
             #
             include( "${_TMP_MULLE_ATINIT_DIR}/DependenciesAndLibraries.cmake")
             #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
             #
             list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_ATINIT_DIR}")
             set( INHERITED_DEFINITIONS
@@ -196,6 +191,7 @@ if( NOT MULLE_ATINIT_LIBRARY)
          endforeach()
       endif()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-atinit no-require-link`
       message( FATAL_ERROR "MULLE_ATINIT_LIBRARY was not found")
    endif()
 endif()
@@ -204,7 +200,7 @@ endif()
 #
 # Generated from sourcetree: 74ed63a5-2891-439c-af19-0240936ad137;mulle-atexit;no-dynamic-link,no-import,no-intermediate-link,no-public,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-atexit no-link`
-# Disable for this platform: `mulle-sourcetree mark mulle-atexit no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark mulle-atexit no-cmake-platform-darwin`
 #
 if( NOT MULLE_ATEXIT_LIBRARY)
    find_library( MULLE_ATEXIT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-atexit${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-atexit NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -224,7 +220,8 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-atexit no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -258,17 +255,9 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          if( EXISTS "${_TMP_MULLE_ATEXIT_DIR}/DependenciesAndLibraries.cmake")
             unset( MULLE_ATEXIT_DEFINITIONS)
             list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_ATEXIT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
             #
             include( "${_TMP_MULLE_ATEXIT_DIR}/DependenciesAndLibraries.cmake")
             #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
             #
             list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_ATEXIT_DIR}")
             set( INHERITED_DEFINITIONS
@@ -299,6 +288,7 @@ if( NOT MULLE_ATEXIT_LIBRARY)
          endforeach()
       endif()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-atexit no-require-link`
       message( FATAL_ERROR "MULLE_ATEXIT_LIBRARY was not found")
    endif()
 endif()
@@ -307,7 +297,7 @@ endif()
 #
 # Generated from sourcetree: 2A82F645-83B8-4603-AFDE-E310A03E023B;mulle-dlfcn;no-all-load,no-import,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-dlfcn no-link`
-# Disable for this platform: `mulle-sourcetree mark mulle-dlfcn no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark mulle-dlfcn no-cmake-platform-darwin`
 #
 if( NOT MULLE_DLFCN_LIBRARY)
    find_library( MULLE_DLFCN_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-dlfcn${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-dlfcn NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -327,7 +317,8 @@ if( NOT MULLE_DLFCN_LIBRARY)
          CACHE INTERNAL "need to cache this"
       )
       #
-      # Inherit ObjC loader and link dependency info.
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark mulle-dlfcn no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
@@ -385,6 +376,7 @@ if( NOT MULLE_DLFCN_LIBRARY)
          endif()
       endforeach()
    else()
+      # Disable with: `mulle-sourcetree mark mulle-dlfcn no-require-link`
       message( FATAL_ERROR "MULLE_DLFCN_LIBRARY was not found")
    endif()
 endif()
