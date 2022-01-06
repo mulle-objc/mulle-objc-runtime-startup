@@ -5,13 +5,13 @@ export MULLE_OBJC_RUNTIME_NODETYPE="git"
 
 
 #
-# mulle-objc-runtime url: ${MULLE_OBJC_RUNTIME_URL:-https://github.com/mulle-objc/mulle-objc-runtime/archive/${MULLE_BRANCH}.tar.gz}
+# mulle-objc-runtime url: ${MULLE_OBJC_RUNTIME_URL:-https://github.com/mulle-objc/mulle-objc-runtime/archive/${MULLE_TAG}.tar.gz}
 #
 export MULLE_OBJC_RUNTIME_URL="https://github.com/mulle-objc/mulle-objc-runtime.git"
 
 
 #
-# mulle-objc-runtime branch: ${MULLE_OBJC_RUNTIME_BRANCH:-latest}
+# mulle-objc-runtime branch: ${MULLE_OBJC_RUNTIME_BRANCH}
 #
 export MULLE_OBJC_RUNTIME_BRANCH="prerelease"
 
@@ -125,21 +125,21 @@ export MULLE_VARARG_BRANCH="prerelease"
 
 
 #
-# mulle-stacktrace nodetype: ${MULLE_STACKTRACE_NODETYPE:-tar}
+# mulle-atinit nodetype: ${MULLE_ATINIT_NODETYPE:-tar}
 #
-export MULLE_STACKTRACE_NODETYPE="git"
+export MULLE_ATINIT_NODETYPE="git"
 
 
 #
-# mulle-stacktrace url: ${MULLE_STACKTRACE_URL:-https://github.com/mulle-core/mulle-stacktrace/archive/${MULLE_TAG}.tar.gz}
+# mulle-atinit url: ${MULLE_ATINIT_URL:-https://github.com/mulle-core/mulle-atinit/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_STACKTRACE_URL="https://github.com/mulle-core/mulle-stacktrace.git"
+export MULLE_ATINIT_URL="https://github.com/mulle-core/mulle-atinit.git"
 
 
 #
-# mulle-stacktrace branch: ${MULLE_STACKTRACE_BRANCH}
+# mulle-atinit branch: ${MULLE_ATINIT_BRANCH}
 #
-export MULLE_STACKTRACE_BRANCH="prerelease"
+export MULLE_ATINIT_BRANCH="prerelease"
 
 
 #
@@ -161,21 +161,21 @@ export MULLE_DLFCN_BRANCH="prerelease"
 
 
 #
-# mulle-atinit nodetype: ${MULLE_ATINIT_NODETYPE:-tar}
+# dlfcn-win32 nodetype: ${DLFCN_WIN32_NODETYPE:-tar}
 #
-export MULLE_ATINIT_NODETYPE="git"
+export DLFCN_WIN32_NODETYPE="git"
 
 
 #
-# mulle-atinit url: ${MULLE_ATINIT_URL:-https://github.com/mulle-core/mulle-atinit/archive/${MULLE_TAG}.tar.gz}
+# dlfcn-win32 url: ${DLFCN_WIN32_URL:-https://github.com/mulle-core/dlfcn-win32/archive/refs/tags/${MULLE_TAG}.tar.gz}
 #
-export MULLE_ATINIT_URL="https://github.com/mulle-core/mulle-atinit.git"
+export DLFCN_WIN32_URL="https://github.com/mulle-core/dlfcn-win32.git"
 
 
 #
-# mulle-atinit branch: ${MULLE_ATINIT_BRANCH}
+# dlfcn-win32 branch: ${DLFCN_WIN32_BRANCH}
 #
-export MULLE_ATINIT_BRANCH="prerelease"
+export DLFCN_WIN32_BRANCH="prerelease"
 
 
 #
