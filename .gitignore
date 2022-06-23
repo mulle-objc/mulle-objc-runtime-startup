@@ -62,3 +62,6 @@ tmp.*/
 .mulle/etc/project/publisher-info.sh
 dox/inheritance/
 dox/super/calls-legacy.md
+.mulle-make-build-dir
+version.old
+.gdb_history
