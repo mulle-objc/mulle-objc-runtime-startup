@@ -5,20 +5,20 @@
 
 This static library provides the required `__register_mulle_objc_universe`
 function for executables, that link against
-[mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime)
+[mulle-objc-runtime](//github.com/mulle-objc/mulle-objc-runtime)
 only.
 
 Use this library, if you want to create executables, that only
 require the [mulle-objc-runtime](//github.com/mulle-objc/mulle-objc-runtime)
 and nothing else. Most projects will link against
-[MulleObjC](https://github.com/mulle-objc/MulleObjC) or the MulleFoundation
+[MulleObjC](//github.com/mulle-objc/MulleObjC) or the MulleFoundation
 though, and will use the startup libraries.
 
 
 
 Build Status | Release Version
 -------------|-----------------------------------
-[![Build Status](https://travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg)](https://travis-ci.org/mulle-objc/mulle-objc) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](https://travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg?branch=release)](https://travis-ci.org/mulle-objc/mulle-objc-runtime-startup)
+[![Build Status](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg)](//travis-ci.org/mulle-objc/mulle-objc) | ![Mulle kybernetiK tag](//img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg?branch=release)](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup)
 
 
 ## Sourcetree
