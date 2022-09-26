@@ -18,7 +18,7 @@ though, and will use the startup libraries.
 
 Build Status | Release Version
 -------------|-----------------------------------
-[![Build Status](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg)](//travis-ci.org/mulle-objc/mulle-objc) | ![Mulle kybernetiK tag](//img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup.svg?branch=release)](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup)
+[![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup.svg)](//travis-ci.org/mulle-objc/mulle-objc) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup.svg?branch=release)](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup)
 
 
 ## Sourcetree
@@ -40,15 +40,15 @@ installation instructions.
 
 Install all above prerequisites:
 
-now build the project
+now build and install the project into `/usr/local`: 
 
-```
-(
-   mkdir build &&
-   cd build &&
-   cmake .. &&
-   make
-)
+``` sh
+cmake -B build \
+      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_PREFIX_PATH=/usr/local \
+      -DCMAKE_BUILD_TYPE=Release &&
+cmake --build build --config Release &&
+cmake --install build --config Release
 ```
 
 ### Conveniently with mulle-sde
