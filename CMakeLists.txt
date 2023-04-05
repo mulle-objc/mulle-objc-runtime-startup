@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.15)
+cmake_minimum_required( VERSION 3.14)
 
 project( mulle-objc-runtime-startup C)
 
@@ -27,8 +27,8 @@ if( HEADERS_PHASE)
    #         command.
    #
    #install( FILES ${INSTALL_PUBLIC_HEADERS}  DESTINATION "include/${PROJECT_NAME}")
-   #install( FILES ${INSTALL_PRIVATE_HEADERS} DESTINATION "include/${PROJECT_NAME}/private")
-   install( FILES ${CMAKE_INCLUDES}          DESTINATION "include/${PROJECT_NAME}/cmake")
+   #install( FILES ${INSTALL_PRIVATE_HEADERS} DESTINATION "include/${PROJECT_NAME}")
+   install( FILES ${INSTALL_CMAKE_INCLUDES}          DESTINATION "include/${PROJECT_NAME}/cmake")
 
 
    # short cut out

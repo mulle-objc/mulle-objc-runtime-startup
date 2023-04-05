@@ -1,0 +1,47 @@
+{
+   project =
+   {
+      description="▶️  Startup code for the mulle-objc runtime";
+      domain="github";
+      name="mulle-objc-runtime-startup";
+      user="mulle-objc";
+      repo="mulle-objc-runtime-startup";
+      homepage="https://github.com/mulle-objc/mulle-objc-runtime-startup";
+      license="BSD-3-Clause"
+   };
+   dependencies =
+   (
+      {
+         description="⏩ A fast, portable Objective-C runtime written 100% in C11";
+         domain="github";
+         name="mulle-objc-runtime";
+         repo="mulle-objc-runtime";
+         url="https://github.com/mulle-objc/mulle-objc-runtime";
+         user="mulle-objc";
+      },
+      {
+         description="🤱🏼 Compatibility library for deterministic initializers";
+         domain="github";
+         name="mulle-atinit";
+         repo="mulle-atinit";
+         url="https://github.com/mulle-core/mulle-atinit";
+         user="mulle-core";
+      },
+      {
+         description="👼 Compatibility library to fix atexit";
+         domain="github";
+         name="mulle-atexit";
+         repo="mulle-atexit";
+         url="https://github.com/mulle-core/mulle-atexit";
+         user="mulle-core";
+      },
+      {
+         description="♿️ Shared library helper";
+         domain="github";
+         name="mulle-dlfcn";
+         repo="mulle-dlfcn";
+         url="https://github.com/mulle-core/mulle-dlfcn";
+         user="mulle-core";
+      }
+   )
+}

@@ -1,0 +1,7 @@
+## Sourcetree
+
+The main raison d'être of mulle-objc-runtime-startup as a seperate library
+is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/mulle-atinit) and
+[mulle-atexit](//github.com/mulle-core/mulle-atexit) for linking with the executable.
+
+
