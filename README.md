@@ -2,7 +2,6 @@
 
 #### ▶️  Startup code for the mulle-objc runtime
 
-
 This static library provides the required `__register_mulle_objc_universe`
 function for executables, that link against
 [mulle-objc-runtime](//github.com/mulle-objc/mulle-objc-runtime)
@@ -14,11 +13,11 @@ and nothing else. Most projects will link against
 [MulleObjC](//github.com/mulle-objc/MulleObjC) or the MulleFoundation
 though, and will use the startup libraries.
 
+| Release Version                                       | Release Notes
+|-------------------------------------------------------|--------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-objc-runtime-startup.svg?branch=release) [![Build Status](https://github.com//mulle-objc-runtime-startup/workflows/CI/badge.svg?branch=release)](//github.com//mulle-objc-runtime-startup/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
-Build Status | Release Version
--------------|-----------------------------------
-[![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup.svg)](//travis-ci.org/mulle-objc/mulle-objc) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup.svg?branch=release)](//travis-ci.org/mulle-objc/mulle-objc-runtime-startup)
 
 
 ## Sourcetree
@@ -28,19 +27,51 @@ is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/
 [mulle-atexit](//github.com/mulle-core/mulle-atexit) for linking with the executable.
 
 
+
+## Requirements
+
+|   Requirement         | Release Version  | Description
+|-----------------------|------------------|---------------
+| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | ⏩ A fast, portable Objective-C runtime written 100% in C11
+| [mulle-atinit](https://github.com/mulle-core/mulle-atinit) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 🤱🏼 Compatibility library for deterministic initializers
+| [mulle-atexit](https://github.com/mulle-core/mulle-atexit) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 👼 Compatibility library to fix atexit
+| [mulle-dlfcn](https://github.com/mulle-core/mulle-dlfcn) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | ♿️ Shared library helper
+
+
+## Add
+
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-objc-runtime-startup to your project:
+
+``` sh
+mulle-sde add github:/
+```
+
+To only add the sources of mulle-objc-runtime-startup with dependency
+sources use [clib](https://github.com/clibs/clib):
+
+
+``` sh
+clib install --out src/ /
+```
+
+Add `-isystem src/` to your `CFLAGS` and compile all the sources that were downloaded with your project.
+
+
 ## Install
 
-See [mulle-objc-developer](//github.com/mulle-objc/mulle-objc-developer) for
-installation instructions.
+### Install with mulle-sde
 
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-objc-runtime-startup and all dependencies:
 
-## Build
+``` sh
+mulle-sde install --prefix /usr/local \
+   https://github.com///archive/latest.tar.gz
+```
 
-### Manually with cmake
+### Manual Installation
 
-Install all above prerequisites:
-
-now build and install the project into `/usr/local`: 
+Install the [Requirements](#Requirements) and then
+install **mulle-objc-runtime-startup** with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
@@ -51,20 +82,8 @@ cmake --build build --config Release &&
 cmake --install build --config Release
 ```
 
-### Conveniently with mulle-sde
-
-Install [mulle-sde]/(//github.com/mulle-sde) and run `mulle-sde craft`.
-
-
-### Platforms and Compilers
-
-All platforms and compilers supported by
-[mulle-c11](//github.com/mulle-c/mulle-c11/) and
-[mulle-thread](//github.com/mulle-concurrent/mulle-thread/).
-
-
 ## Author
 
-[Nat!](//www.mulle-kybernetik.com/weblog) for
-[Mulle kybernetiK](//www.mulle-kybernetik.com) and
-[Codeon GmbH](//www.codeon.de)
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+
+
