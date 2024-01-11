@@ -13,9 +13,12 @@ and nothing else. Most projects will link against
 [MulleObjC](//github.com/mulle-objc/MulleObjC) or the MulleFoundation
 though, and will use the startup libraries.
 
+
+
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-objc-runtime-startup.svg?branch=release) [![Build Status](https://github.com//mulle-objc-runtime-startup/workflows/CI/badge.svg?branch=release)](//github.com//mulle-objc-runtime-startup/actions)| [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg?branch=release) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup/workflows/CI/badge.svg?branch=release)](//github.com/mulle-objc/mulle-objc-runtime-startup/actions) | [RELEASENOTES](RELEASENOTES.md) |
+
 
 
 
@@ -25,6 +28,12 @@ though, and will use the startup libraries.
 The main raison d'être of mulle-objc-runtime-startup as a seperate library
 is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/mulle-atinit) and
 [mulle-atexit](//github.com/mulle-core/mulle-atexit) for linking with the executable.
+
+
+
+### You are here
+
+![Overview](overview.dot.svg)
 
 
 
@@ -40,10 +49,17 @@ is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/
 
 ## Add
 
+**This project is a component of the [mulle-core](//github.com/mulle-core/mulle-core) library. As such you usually will *not* add or install it
+individually, unless you specifically do not want to link against
+`mulle-core`.**
+
+
+### Add as an individual component
+
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-objc-runtime-startup to your project:
 
 ``` sh
-mulle-sde add github:/
+mulle-sde add github:mulle-objc/mulle-objc-runtime-startup
 ```
 
 To only add the sources of mulle-objc-runtime-startup with dependency
@@ -51,10 +67,10 @@ sources use [clib](https://github.com/clibs/clib):
 
 
 ``` sh
-clib install --out src/ /
+clib install --out src/mulle-objc mulle-objc/mulle-objc-runtime-startup
 ```
 
-Add `-isystem src/` to your `CFLAGS` and compile all the sources that were downloaded with your project.
+Add `-isystem src/mulle-objc` to your `CFLAGS` and compile all the sources that were downloaded with your project.
 
 
 ## Install
@@ -82,8 +98,10 @@ cmake --build build --config Release &&
 cmake --install build --config Release
 ```
 
+
 ## Author
 
-[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK  
+
 
 
