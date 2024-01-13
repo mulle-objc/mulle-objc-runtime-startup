@@ -34,14 +34,6 @@
          repo="mulle-atexit";
          url="https://github.com/mulle-core/mulle-atexit";
          user="mulle-core";
-      },
-      {
-         description="♿️ Shared library helper";
-         domain="github";
-         name="mulle-dlfcn";
-         repo="mulle-dlfcn";
-         url="https://github.com/mulle-core/mulle-dlfcn";
-         user="mulle-core";
       }
-   )
+   );
 }
