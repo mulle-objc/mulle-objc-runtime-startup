@@ -48,9 +48,8 @@ is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/
 
 ## Add
 
-### Add as an individual component
-
-Use [mulle-sde](//github.com/mulle-sde) to add mulle-objc-runtime-startup to your project:
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-objc-runtime-startup to your project.
+As long as your sources are using `#include "include-private.h"` and your headers use `#include "include.h"`, there will nothing more to do:
 
 ``` sh
 mulle-sde add github:mulle-objc/mulle-objc-runtime-startup
@@ -59,12 +58,63 @@ mulle-sde add github:mulle-objc/mulle-objc-runtime-startup
 To only add the sources of mulle-objc-runtime-startup with dependency
 sources use [clib](https://github.com/clibs/clib):
 
+## Legacy adds
+
+One common denominator is that you will likely have to add
+`#include <mulle-objc-runtime-startup/mulle-objc-runtime-startup.h>` to your source files.
+
+
+### Add sources to your project with clib
 
 ``` sh
 clib install --out src/mulle-objc mulle-objc/mulle-objc-runtime-startup
 ```
 
-Add `-isystem src/mulle-objc` to your `CFLAGS` and compile all the sources that were downloaded with your project.
+Add `-isystem src/mulle-objc` to your `CFLAGS` and compile all the
+sources that were downloaded with your project. (In **cmake** add
+`include_directories( BEFORE SYSTEM src/mulle-objc)` to your `CMakeLists.txt`
+file).
+
+
+
+
+
+
+
+### Add as subproject with cmake and git
+
+``` bash
+git submodule add -f --name "mulle-core" \
+                            "https://github.com/mulle-core/mulle-core.git" \
+                            "stash/mulle-core"
+git submodule add -f --name "mulle-objc-runtime" \
+                            "https://github.com/mulle-objc/mulle-objc-runtime.git" \
+                            "stash/mulle-objc-runtime"
+git submodule add -f --name "mulle-atinit" \
+                            "https://github.com/mulle-core/mulle-atinit.git" \
+                            "stash/mulle-atinit"
+git submodule add -f --name "mulle-atexit" \
+                            "https://github.com/mulle-core/mulle-atexit.git" \
+                            "stash/mulle-atexit"
+git submodule add -f --name "mulle-objc-runtime-startup" \
+                            "https://github.com/mulle-objc/mulle-objc-runtime-startup" \
+                            "stash/mulle-objc-runtime-startup"
+git submodule update --init --recursive
+```
+
+``` cmake
+add_subdirectory( stash/mulle-objc-runtime-startup)
+add_subdirectory( stash/mulle-atexit)
+add_subdirectory( stash/mulle-atinit)
+add_subdirectory( stash/mulle-objc-runtime)
+add_subdirectory( stash/mulle-core)
+
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime-startup)
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-atexit)
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-atinit)
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime)
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-core)
+```
 
 
 ## Install
