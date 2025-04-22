@@ -36,7 +36,7 @@
 #include <mulle-objc-runtime/mulle-objc-runtime.h>
 
 
-#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (20 << 8) | 5)
+#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (20 << 8) | 6)
 
 // always returns same value (in same thread)
 MULLE_C_GLOBAL
