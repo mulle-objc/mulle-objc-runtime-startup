@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.14)
 
-project( mulle-objc-runtime-startup VERSION 0.20.5 LANGUAGES C)
+project( mulle-objc-runtime-startup VERSION 0.20.6 LANGUAGES C)
 
 
 ### mulle-sde environment
