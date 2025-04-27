@@ -15,9 +15,9 @@ though, and will use the startup libraries.
 
 
 
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup/workflows/CI/badge.svg)](//github.com/mulle-objc/mulle-objc-runtime-startup/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| Release Version                                       | Release Notes  | AI Documentation
+|-------------------------------------------------------|----------------|---------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime-startup.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime-startup/workflows/CI/badge.svg)](//github.com/mulle-objc/mulle-objc-runtime-startup/actions) | [RELEASENOTES](RELEASENOTES.md) | [DeepWiki for mulle-objc-runtime-startup](https://deepwiki.com/mulle-objc/mulle-objc-runtime-startup)
 
 
 
