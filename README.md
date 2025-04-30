@@ -55,8 +55,8 @@ As long as your sources are using `#include "include-private.h"` and your header
 mulle-sde add github:mulle-objc/mulle-objc-runtime-startup
 ```
 
-To only add the sources of mulle-objc-runtime-startup with dependency
-sources use [clib](https://github.com/clibs/clib):
+To only add the sources of mulle-objc-runtime-startup with all the sources of its
+dependencies replace "github:" with [clib:](https://github.com/clibs/clib):
 
 ## Legacy adds
 
@@ -87,15 +87,15 @@ file).
 git submodule add -f --name "mulle-core" \
                             "https://github.com/mulle-core/mulle-core.git" \
                             "stash/mulle-core"
-git submodule add -f --name "mulle-objc-runtime" \
-                            "https://github.com/mulle-objc/mulle-objc-runtime.git" \
-                            "stash/mulle-objc-runtime"
 git submodule add -f --name "mulle-atinit" \
                             "https://github.com/mulle-core/mulle-atinit.git" \
                             "stash/mulle-atinit"
 git submodule add -f --name "mulle-atexit" \
                             "https://github.com/mulle-core/mulle-atexit.git" \
                             "stash/mulle-atexit"
+git submodule add -f --name "mulle-objc-runtime" \
+                            "https://github.com/mulle-objc/mulle-objc-runtime.git" \
+                            "stash/mulle-objc-runtime"
 git submodule add -f --name "mulle-objc-runtime-startup" \
                             "https://github.com/mulle-objc/mulle-objc-runtime-startup" \
                             "stash/mulle-objc-runtime-startup"
@@ -104,22 +104,20 @@ git submodule update --init --recursive
 
 ``` cmake
 add_subdirectory( stash/mulle-objc-runtime-startup)
+add_subdirectory( stash/mulle-objc-runtime)
 add_subdirectory( stash/mulle-atexit)
 add_subdirectory( stash/mulle-atinit)
-add_subdirectory( stash/mulle-objc-runtime)
 add_subdirectory( stash/mulle-core)
 
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime-startup)
+target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime)
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-atexit)
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-atinit)
-target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime)
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-core)
 ```
 
 
 ## Install
-
-### Install with mulle-sde
 
 Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-objc-runtime-startup and all dependencies:
 
@@ -128,15 +126,32 @@ mulle-sde install --prefix /usr/local \
    https://github.com/mulle-objc/mulle-objc-runtime-startup/archive/latest.tar.gz
 ```
 
-### Manual Installation
+### Legacy Installation
 
-Install the [Requirements](#Requirements) and then
-install **mulle-objc-runtime-startup** with [cmake](https://cmake.org):
+
+#### Requirements
+
+Install all requirements
+
+| Requirements                                 | Description
+|----------------------------------------------|-----------------------
+| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime)             | ⏩ A fast, portable Objective-C runtime written 100% in C11
+| [mulle-atinit](https://github.com/mulle-core/mulle-atinit)             | 🤱🏼 Compatibility library for deterministic initializers
+| [mulle-atexit](https://github.com/mulle-core/mulle-atexit)             | 👼 Compatibility library to fix atexit
+
+#### Download & Install
+
+
+Download the latest [tar](https://github.com/mulle-objc/mulle-objc-runtime-startup/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/mulle-objc/mulle-objc-runtime-startup/archive/refs/tags/latest.zip) archive and unpack it.
+
+Install **mulle-objc-runtime-startup** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
-cmake -B build \
-      -DCMAKE_INSTALL_PREFIX=/usr/local \
-      -DCMAKE_PREFIX_PATH=/usr/local \
+PREFIX_DIR="/usr/local"
+cmake -B build                               \
+      -DMULLE_SDK_PATH="${PREFIX_DIR}"       \
+      -DCMAKE_INSTALL_PREFIX="${PREFIX_DIR}" \
+      -DCMAKE_PREFIX_PATH="${PREFIX_DIR}"    \
       -DCMAKE_BUILD_TYPE=Release &&
 cmake --build build --config Release &&
 cmake --install build --config Release
