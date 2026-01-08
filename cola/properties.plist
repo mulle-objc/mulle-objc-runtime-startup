@@ -3,6 +3,8 @@
    {
       description="▶️  Startup code for the mulle-objc runtime";
       domain="github";
+      language="c";
+      dialect="c";
       name="mulle-objc-runtime-startup";
       user="mulle-objc";
       repo="mulle-objc-runtime-startup";
@@ -12,12 +14,12 @@
    dependencies =
    (
       {
-         description="⏩ A fast, portable Objective-C runtime written 100% in C11";
+         description="🌋 Almagamated library of mulle-core + mulle-concurrent + mulle-c";
          domain="github";
-         name="mulle-objc-runtime";
-         repo="mulle-objc-runtime";
-         url="https://github.com/mulle-objc/mulle-objc-runtime";
-         user="mulle-objc";
+         name="mulle-core";
+         repo="mulle-core";
+         url="https://github.com/mulle-core/mulle-core";
+         user="mulle-core";
       },
       {
          description="🤱🏼 Compatibility library for deterministic initializers";
@@ -34,6 +36,14 @@
          repo="mulle-atexit";
          url="https://github.com/mulle-core/mulle-atexit";
          user="mulle-core";
+      },
+      {
+         description="⏩ A fast, portable Objective-C runtime written 100% in C11";
+         domain="github";
+         name="mulle-objc-runtime";
+         repo="mulle-objc-runtime";
+         url="https://github.com/mulle-objc/mulle-objc-runtime";
+         user="mulle-objc";
       }
    );
 }
