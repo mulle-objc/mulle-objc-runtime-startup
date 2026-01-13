@@ -14,30 +14,6 @@
    dependencies =
    (
       {
-         description="🌋 Almagamated library of mulle-core + mulle-concurrent + mulle-c";
-         domain="github";
-         name="mulle-core";
-         repo="mulle-core";
-         url="https://github.com/mulle-core/mulle-core";
-         user="mulle-core";
-      },
-      {
-         description="🤱🏼 Compatibility library for deterministic initializers";
-         domain="github";
-         name="mulle-atinit";
-         repo="mulle-atinit";
-         url="https://github.com/mulle-core/mulle-atinit";
-         user="mulle-core";
-      },
-      {
-         description="👼 Compatibility library to fix atexit";
-         domain="github";
-         name="mulle-atexit";
-         repo="mulle-atexit";
-         url="https://github.com/mulle-core/mulle-atexit";
-         user="mulle-core";
-      },
-      {
          description="⏩ A fast, portable Objective-C runtime written 100% in C11";
          domain="github";
          name="mulle-objc-runtime";
