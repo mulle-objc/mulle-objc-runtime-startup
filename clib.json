@@ -1,6 +1,6 @@
 {
    "name" : "mulle-objc-runtime-startup",
-   "version" : "0.20.4",
+   "version" : "0.20.7",
    "description" : "▶️  Startup code for the mulle-objc runtime",
    "keywords" : [],
    "license" : "BSD-3-Clause",
@@ -10,8 +10,6 @@
       "src/reflect/_mulle-objc-runtime-startup-provide.h"
    ],
    "dependencies" : {
-      "mulle-objc/mulle-objc-runtime": "*",
-      "mulle-core/mulle-atinit": "*",
-      "mulle-core/mulle-atexit": "*"
+      "mulle-objc/mulle-objc-runtime": "*"
    }
 }

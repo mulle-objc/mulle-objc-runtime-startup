@@ -1,3 +1,9 @@
+### 0.20.7
+
+
+* removed redundant transitive dependency listings from README and installation instructions
+* users now only need to reference mulle-objc-runtime directly
+
 ### 0.20.6
 
 Various small improvements
