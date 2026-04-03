@@ -52,3 +52,9 @@ export PROJECT_DOWNCASE_IDENTIFIER="mulle_objc_runtime-startup"
 export PROJECT_UPCASE_IDENTIFIER="MULLE_OBJC_RUNTIME_STARTUP"
 
 
+#
+#
+#
+export PROJECT_ASSET_DIR="asset"
+
+
