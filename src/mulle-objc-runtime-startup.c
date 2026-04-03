@@ -33,14 +33,17 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#define MULLE_OBJC_DEFINE_REGISTER_UNIVERSE
+
+
 #include <mulle-objc-runtime/mulle-objc-runtime.h>
 
 
-#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (20 << 8) | 7)
+#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (21 << 8) | 0)
 
 // always returns same value (in same thread)
-MULLE_C_GLOBAL
-MULLE_C_CONST_RETURN struct _mulle_objc_universe  *
+MULLE_C_CONST_RETURN
+struct _mulle_objc_universe  *
    __register_mulle_objc_universe( mulle_objc_universeid_t universeid,
                                    char *universename)
 {

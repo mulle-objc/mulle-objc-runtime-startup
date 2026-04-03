@@ -1,4 +1,5 @@
 # mulle-objc-runtime-startup Library Documentation for AI
+<!-- Keywords: startup, initialization -->
 
 ## 1. Introduction & Purpose
 
