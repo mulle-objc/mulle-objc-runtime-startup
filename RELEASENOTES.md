@@ -1,57 +1,7 @@
-### 0.20.7
+## 0.21.0
 
 
-* removed redundant transitive dependency listings from README and installation instructions
-* users now only need to reference mulle-objc-runtime directly
-
-### 0.20.6
-
-Various small improvements
-
-### 0.20.5
-
-Various small improvements
-
-### 0.20.4
-
-* Various small improvements
-
-### 0.20.3
-
-* Various small improvements
-
-### 0.20.2
-
-* Various small improvements
-
-### 0.20.1
-
-* Various small improvements
-
-## 0.20.0
-
-* Various small improvements
 
 
-## 0.19.0
-
-* Various small improvements
-
-
-## 0.18.0
-
-* Various small improvements
-
-
-### 0.17.1
-
-* new mulle-sde project structure
-
-## 0.17.0
-
-* Various small improvements
-
-
-## 0.16.0
-
-* Various small improvements
+* startup library now provides the `__register_mulle_objc_universe` symbol so executables linking only against mulle-objc-runtime get the required registration function
+* internal startup version constant bumped to reflect the change
