@@ -1,6 +1,6 @@
 {
    "name" : "mulle-objc-runtime-startup",
-   "version" : "0.21.0",
+   "version" : "0.21.1",
    "description" : "▶️  Startup code for the mulle-objc runtime",
    "keywords" : [],
    "license" : "BSD-3-Clause",
