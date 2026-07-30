@@ -22,3 +22,9 @@ export MULLE_SOURCETREE_TO_C_INCLUDE_FILE="DISABLE"
 export MULLE_SOURCETREE_TO_C_PRIVATEINCLUDE_FILE="DISABLE"
 
 
+#
+#
+#
+export vibecoding="off"
+
+
