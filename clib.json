@@ -11,6 +11,7 @@
       "src/reflect/_mulle-objc-runtime-startup-provide.h"
    ],
    "dependencies" : {
+      "mulle-core/mulle-stacktrace": "*",
       "mulle-objc/mulle-objc-runtime": "*"
    }
 }

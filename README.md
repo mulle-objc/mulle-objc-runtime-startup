@@ -22,6 +22,11 @@ though, and will use the startup libraries.
 
 
 
+## Documentation & Guides
+
+* [API Summary](asset/dox/api/toc)
+
+
 
 ## Sourcetree
 

@@ -7,7 +7,7 @@
       dialect="c";
       name="mulle-objc-runtime-startup";
       user="mulle-objc";
-      version="0.21.1";
+      version="0.22.0";
       repo="mulle-objc-runtime-startup";
       homepage="https://github.com/mulle-objc/mulle-objc-runtime-startup";
       license="BSD-3-Clause";
