@@ -1,11 +1,11 @@
 //
 //  mulle-objc-runtime-startup.c
-//  mulle-objc-runtime
+//  mulle-objc-runtime-startup
 //
-//  Created by Nat! on 21.01.16.
-//  Copyright (c) 2016 Nat! - Mulle kybernetiK.
+//  Copyright (c) 2019 Nat! - Mulle kybernetiK.
 //  Copyright (c) 2016 Codeon GmbH.
 //  All rights reserved.
+//
 //
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
@@ -38,8 +38,18 @@
 
 #include <mulle-objc-runtime/mulle-objc-runtime.h>
 
+#include <mulle-stacktrace/mulle-stacktrace.h>
 
-#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (21 << 8) | 1)
+// Keep this declaration usable with older cached runtime headers. The symbol
+// is supplied by the runtime built alongside this startup library.
+MULLE_OBJC_RUNTIME_GLOBAL
+void
+   mulle_objc_universe_set_stacktrace_callback(
+      struct _mulle_objc_universe *universe,
+      void (*callback)( FILE *fp));
+
+
+#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (22 << 8) | 0)
 
 // always returns same value (in same thread)
 MULLE_C_CONST_RETURN
@@ -52,6 +62,8 @@ struct _mulle_objc_universe  *
    universe = __mulle_objc_global_get_universe( universeid, universename);
    if( _mulle_objc_universe_is_uninitialized( universe))
       _mulle_objc_universe_bang( universe, 0, NULL, NULL);
+   mulle_objc_universe_set_stacktrace_callback( universe,
+                                                 mulle_stacktrace_once);
 
    return( universe);
 }
