@@ -1,17 +1,16 @@
 {
    "name" : "mulle-objc-runtime-startup",
-   "version" : "0.21.1",
+   "version" : "0.22.0",
    "description" : "▶️  Startup code for the mulle-objc runtime",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "mulle-objc/mulle-objc-runtime-startup",
    "src" : [
-      "asset/dox/TOC.md",
+      "asset/dox/api/toc/index.md",
       "src/mulle-objc-runtime-startup.c",
       "src/reflect/_mulle-objc-runtime-startup-provide.h"
    ],
    "dependencies" : {
-      "mulle-core/mulle-stacktrace": "*",
       "mulle-objc/mulle-objc-runtime": "*"
    }
 }
