@@ -49,7 +49,7 @@ void
       void (*callback)( FILE *fp));
 
 
-#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (22 << 8) | 0)
+#define MULLE_OBJC_RUNTIME_STARTUP_VERSION   ((0UL << 20) | (22 << 8) | 1)
 
 // always returns same value (in same thread)
 MULLE_C_CONST_RETURN
