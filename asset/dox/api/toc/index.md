@@ -65,7 +65,7 @@ void
 - Macro that must be defined in the `.c` providing the `__register_mulle_objc_universe` definition (and nowhere else). It causes the runtime header to emit `MULLE_C_GLOBAL` (a definition) instead of `MULLE_C_EXTERN_GLOBAL`.
 
 #### `MULLE_OBJC_RUNTIME_STARTUP_VERSION`
-- Version encoding macro, currently `((0UL << 20) | (22 << 8) | 0)` i.e. version 0.22.0. Useful for diagnostics.
+- Version encoding macro, currently `((0UL << 20) | (22 << 8) | 1)` i.e. version 0.22.1. Useful for diagnostics.
 
 ### 3.2. Referenced runtime symbols (from `mulle-objc-runtime`, not defined here)
 - `__mulle_objc_global_get_universe( mulle_objc_universeid_t universeid, char *universename)` — lookup/create the universe.
