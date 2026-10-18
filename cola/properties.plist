@@ -7,7 +7,6 @@
       dialect="c";
       name="mulle-objc-runtime-startup";
       user="mulle-objc";
-      version="0.22.1";
       repo="mulle-objc-runtime-startup";
       homepage="https://github.com/mulle-objc/mulle-objc-runtime-startup";
       license="BSD-3-Clause";
@@ -15,7 +14,7 @@
    dependencies =
    (
       {
-         description="⏩ A fast, portable Objective-C runtime written 100% in C11";
+         description="⏩ A fast, portable Objective-C runtime written 100% in C";
          domain="github";
          name="mulle-objc-runtime";
          repo="mulle-objc-runtime";

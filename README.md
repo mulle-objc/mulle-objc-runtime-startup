@@ -46,7 +46,7 @@ is to bequeath the required dependencies [mulle-atinit](//github.com/mulle-core/
 
 |   Requirement         | Release Version  | Description
 |-----------------------|------------------|---------------
-| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-objc/mulle-objc-runtime/actions/workflows/mulle-sde-ci.yml) | ⏩ A fast, portable Objective-C runtime written 100% in C11
+| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-objc/mulle-objc-runtime/actions/workflows/mulle-sde-ci.yml) | ⏩ A fast, portable Objective-C runtime written 100% in C
 
 
 ## Quickstart
@@ -98,39 +98,31 @@ file).
 
 
 
-### Add as subproject with cmake and git
+### Add as subproject with cmake
 
-``` bash
-git submodule add -f --name "mulle-core" \
-                            "https://github.com/mulle-core/mulle-core.git" \
-                            "stash/mulle-core"
-git submodule add -f --name "libbacktrace" \
-                            "https://github.com/mulle-core/libbacktrace.git" \
-                            "stash/libbacktrace"
-git submodule add -f --name "mulle-core-all-load" \
-                            "https://github.com/mulle-core/mulle-core-all-load.git" \
-                            "stash/mulle-core-all-load"
-git submodule add -f --name "mulle-objc-runtime" \
-                            "https://github.com/mulle-objc/mulle-objc-runtime.git" \
-                            "stash/mulle-objc-runtime"
-git submodule add -f --name "mulle-objc-runtime-startup" \
-                            "https://github.com/mulle-objc/mulle-objc-runtime-startup" \
-                            "stash/mulle-objc-runtime-startup"
-git submodule update --init --recursive
-```
+Add mulle-objc-runtime-startup and its dependencies to your `CMakeLists.txt` with
+[FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html):
 
 ``` cmake
-add_subdirectory( stash/mulle-objc-runtime-startup)
-add_subdirectory( stash/mulle-objc-runtime)
-add_subdirectory( stash/mulle-core-all-load)
-add_subdirectory( stash/libbacktrace)
-add_subdirectory( stash/mulle-core)
+include( FetchContent)
+
+include_directories( SYSTEM "${CMAKE_BINARY_DIR}/include")
+
+set( MULLE__OBJC__RUNTIME_TAG "master" CACHE STRING "branch or tag to fetch mulle-objc-runtime from")
+
+FetchContent_Declare( MULLE__OBJC__RUNTIME
+   GIT_REPOSITORY https://github.com/mulle-objc/mulle-objc-runtime.git
+   GIT_TAG        "${MULLE__OBJC__RUNTIME_TAG}")
+FetchContent_MakeAvailable( MULLE__OBJC__RUNTIME)
+
+set( MULLE__OBJC__RUNTIME__STARTUP_TAG "master" CACHE STRING "branch or tag to fetch mulle-objc-runtime-startup from")
+
+FetchContent_Declare( MULLE__OBJC__RUNTIME__STARTUP
+   GIT_REPOSITORY https://github.com/mulle-objc/mulle-objc-runtime-startup.git
+   GIT_TAG        "${MULLE__OBJC__RUNTIME__STARTUP_TAG}")
+FetchContent_MakeAvailable( MULLE__OBJC__RUNTIME__STARTUP)
 
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime-startup)
-target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-objc-runtime)
-target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-core-all-load)
-target_link_libraries( ${PROJECT_NAME} PUBLIC libbacktrace)
-target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-core)
 ```
 
 
@@ -152,7 +144,7 @@ Install all requirements
 
 | Requirements                                 | Description
 |----------------------------------------------|-----------------------
-| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime)             | ⏩ A fast, portable Objective-C runtime written 100% in C11
+| [mulle-objc-runtime](https://github.com/mulle-objc/mulle-objc-runtime)             | ⏩ A fast, portable Objective-C runtime written 100% in C
 
 #### Download & Install
 
